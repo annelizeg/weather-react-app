@@ -4,9 +4,7 @@ import "./Search.css";
 import magnifyglass from "./images/other/magnifyglass.png";
 import locationPin from "./images/other/locationPin.png";
 
-{
-  /* City Search Block and Current Location Button*/
-}
+/* City Search Block and Current Location Button*/
 
 export default function Search() {
   return (

@@ -4,9 +4,7 @@ import "./Summary.css";
 import Park1 from "./images/Park1.svg";
 import weatherIcon from "./images/overcast.png";
 
-{
-  /* Today's Weather Summary */
-}
+/* Today's Weather Summary */
 
 export default function Summary() {
   return (
@@ -30,7 +28,7 @@ export default function Summary() {
         <div className="col-4 gy-3 align-self-center">
           <img
             src={Park1}
-            alt="app park picture"
+            alt="Park bench"
             width="215px"
             id="app-park-picture"
             className="mt-2"

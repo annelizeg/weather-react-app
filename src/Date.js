@@ -1,9 +1,7 @@
 import React from "react";
 import "./Date.css";
 
-{
-  /* Today's Day, Date & Time */
-}
+/* Today's Day, Date & Time */
 
 export default function Date() {
   return (

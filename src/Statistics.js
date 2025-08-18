@@ -1,9 +1,7 @@
 import React from "react";
 import "./Statistics.css";
 
-{
-  /* Today's Weather Statistics */
-}
+/* Today's Weather Statistics */
 
 export default function Statistics() {
   return (

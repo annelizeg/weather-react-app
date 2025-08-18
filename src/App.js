@@ -1,24 +1,62 @@
-import logo from "./logo.svg";
+import React from "react";
+
+import Search from "./Search";
+import Summary from "./Summary";
+import Date from "./Date";
+import Statistics from "./Statistics";
+import Footer from "./Footer";
+
 import "./App.css";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>My Awesome React Weather App</h1>
-        <img src={logo} className="App-logo" alt="logo" />
+      <div className="container">
+        <h1 className="heading">What is the weather like today?</h1>
 
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        {/*  City Search Block and Current Location Button */}
+        <div className="card">
+          <div className="card-body">
+            <Search />
+          </div>
+        </div>
+
+        <br />
+
+        <div className="row row-cols-2 justify-content-center">
+          <div className="col-7">
+            {/* Today's Weather Summary */}
+            <div className="card h-100 text-center">
+              <div className="card-body">
+                <Summary />
+              </div>
+            </div>
+          </div>
+
+          <div className="col-5">
+            {/* Today's Day, Date & Time */}
+            <div className="card text-center">
+              <div className="card-body">
+                <Date />
+              </div>
+            </div>
+
+            <br />
+
+            {/* Today's Weather Statistics */}
+            <div className="card text-center">
+              <div className="card-body">
+                <Statistics />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        {/* Footer */}
+        <Footer />
+      </div>
     </div>
   );
 }
-
-export default App;

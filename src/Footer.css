@@ -1,0 +1,25 @@
+.Footer {
+  color: #fff;
+  font-family: "PT Mono", monospace;
+  font-size: 13px;
+  text-align: center;
+}
+
+.Footer .coder {
+  color: #fdfdeb;
+  font-weight: 500;
+  text-shadow: 1px 1px 1px #09194f;
+}
+
+.Footer a {
+  color: #fff;
+  font-weight: 500;
+  text-shadow: 1px 1px 1px #09194f;
+  text-decoration: none;
+}
+
+.Footer a:hover {
+  color: #f9ce00;
+  cursor: pointer;
+  text-decoration: underline;
+}

@@ -1,0 +1,9 @@
+.Date #current-day {
+  font-size: 1.5em;
+  font-weight: 800;
+}
+
+.Date #date-time {
+  font-size: 1.2em;
+  font-weight: 700;
+}

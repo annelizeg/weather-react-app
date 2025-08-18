@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <div className="Footer">
       <a
-        href="https://github.com/annelizeg/weather-app"
+        href="https://github.com/annelizeg/weather-react-app"
         target="_blank"
         rel="noreferrer"
       >

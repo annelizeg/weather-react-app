@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Search from "./Search";
 import Summary from "./Summary";
@@ -9,6 +9,8 @@ import Footer from "./Footer";
 import "./App.css";
 
 export default function App() {
+  const [weatherData, setWeatherData] = useState(null);
+
   return (
     <div className="App">
       <div className="container">
@@ -17,7 +19,7 @@ export default function App() {
         {/*  City Search Block and Current Location Button */}
         <div className="card">
           <div className="card-body">
-            <Search />
+            <Search defaultCity="Gobabis" onWeatherFetched={setWeatherData} />
           </div>
         </div>
 
@@ -28,7 +30,7 @@ export default function App() {
             {/* Today's Weather Summary */}
             <div className="card h-100 text-center">
               <div className="card-body">
-                <Summary />
+                <Summary data={weatherData} />
               </div>
             </div>
           </div>

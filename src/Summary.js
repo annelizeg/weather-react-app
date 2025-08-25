@@ -6,18 +6,22 @@ import weatherIcon from "./images/overcast.png";
 
 /* Today's Weather Summary */
 
-export default function Summary() {
+export default function Summary(props) {
+  if (!props.data) {
+    return <p>Loading summary...</p>; // or just return nothing until data exists
+  }
+
   return (
     <div className="Summary">
       <h2>
         Currently in <br />
         <span className="city" id="display-city">
-          Adelaide
+          {props.data.city}
         </span>
       </h2>
       <div className="row gx-0 justify-content-center">
         <div className="col-5 align-self-center">
-          <h2 id="current-temp">13</h2>
+          <h2 id="current-temp">{props.data.temp}</h2>
         </div>
         <div className="col-3 align-self-top temp-unit-selector">
           <button className="celsius-button celsius-button-selected">℃</button>|
@@ -42,20 +46,20 @@ export default function Summary() {
             id="weather-iconC"
             className="mb-1 mt-1"
           />
-          <h4 id="weather-description">Overcast Clouds</h4>
+          <h4 id="weather-description">{props.data.conditionDescription}</h4>
         </div>
       </div>
       <br />
       <p>
         Today's high:{" "}
         <span id="today-high" className="temp">
-          13
+          {props.data.tempMax}
         </span>
         <span className="temp-units">℃</span>
         <br />
         Today's low:{" "}
         <span id="today-low" className="temp">
-          7
+          {props.data.tempMin}
         </span>
         <span className="temp-units">℃</span>
       </p>

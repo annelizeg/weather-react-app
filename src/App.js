@@ -48,7 +48,7 @@ export default function App() {
             {/* Today's Weather Statistics */}
             <div className="card text-center">
               <div className="card-body">
-                <Statistics />
+                <Statistics weatherData={weatherData} />
               </div>
             </div>
           </div>

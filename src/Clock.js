@@ -1,21 +1,22 @@
 import React from "react";
-import "./Date.css";
+import "./Clock.css";
 
 /* Today's Day, Date & Time */
 
-export default function Date(props) {
-  if (!props.weatherData) {
-    return <p>Loading date...</p>; // or just return nothing until data exists
+export default function Clock() {
+  // if (!props.weatherData) {
+  //   return <p>Loading date...</p>; // or just return nothing until data exists
+  // }
+
+  let now = new Date();
+  // let now = props.weatherData.date;
+
+  function addZero(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
   }
-
-  let dateData = props.weatherData.date;
-
-  //   function addZero(i) {
-  //     if (i < 10) {
-  //       i = "0" + i;
-  //     }
-  //     return i;
-  //   }
 
   let days = [
     "Sunday",
@@ -42,18 +43,18 @@ export default function Date(props) {
     "December",
   ];
 
-  let day = days[dateData.getDay()];
-  let date = dateData.getDate();
-  let month = months[dateData.getMonth()];
-  let year = dateData.getFullYear();
-  //   let hours = addZero(dateData.getHours());
-  //   let minutes = addZero(dateData.getMinutes());
+  let day = days[now.getDay()];
+  let date = now.getDate();
+  let month = months[now.getMonth()];
+  let year = now.getFullYear();
+  let hours = addZero(now.getHours());
+  let minutes = addZero(now.getMinutes());
 
-  let ufhours = dateData.getHours();
-  let hours = ufhours >= 10 ? ufhours : `0${ufhours}`;
+  //   let ufhours = dateData.getHours();
+  //   let hours = ufhours >= 10 ? ufhours : `0${ufhours}`;
 
-  let ufminutes = dateData.getMinutes();
-  let minutes = ufminutes >= 10 ? ufminutes : `0${ufminutes}`;
+  //   let ufminutes = dateData.getMinutes();
+  //   let minutes = ufminutes >= 10 ? ufminutes : `0${ufminutes}`;
 
   let thisAmPm = hours >= 12 ? "PM" : "AM";
 

@@ -26,7 +26,7 @@ export default function Search(props) {
       conditionDescription: response.data.weather[0].description,
       wind: roundedWindSpeed,
       iconCode: response.data.weather[0].icon,
-      date: new Date(response.data.dt * 1000),
+      // date: new Date(response.data.dt * 1000), //SelfNote: this seems to be the time that OpenWeather API made calculations and not the actual current time - think to remove.
     };
 
     props.onWeatherFetched(newWeatherData);

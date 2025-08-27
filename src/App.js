@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Search from "./Search";
 import Summary from "./Summary";
-import Date from "./Date";
+import Clock from "./Clock";
 import Statistics from "./Statistics";
 import Footer from "./Footer";
 
@@ -39,7 +39,7 @@ export default function App() {
             {/* Today's Day, Date & Time */}
             <div className="card text-center">
               <div className="card-body">
-                <Date weatherData={weatherData} />
+                <Clock />
               </div>
             </div>
 

@@ -26,6 +26,7 @@ export default function Search(props) {
       conditionDescription: response.data.weather[0].description,
       wind: roundedWindSpeed,
       iconCode: response.data.weather[0].icon,
+      date: new Date(response.data.dt * 1000),
     };
 
     props.onWeatherFetched(newWeatherData);

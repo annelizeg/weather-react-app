@@ -39,7 +39,7 @@ export default function App() {
             {/* Today's Day, Date & Time */}
             <div className="card text-center">
               <div className="card-body">
-                <Date />
+                <Date weatherData={weatherData} />
               </div>
             </div>
 

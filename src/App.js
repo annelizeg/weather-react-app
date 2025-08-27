@@ -30,7 +30,7 @@ export default function App() {
             {/* Today's Weather Summary */}
             <div className="card h-100 text-center">
               <div className="card-body">
-                <Summary data={weatherData} />
+                <Summary weatherData={weatherData} />
               </div>
             </div>
           </div>

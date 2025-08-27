@@ -8,8 +8,8 @@ import locationPin from "./images/other/locationPin.png";
 /* City Search Block and Current Location Button*/
 
 export default function Search(props) {
-  let [ready, setReady] = useState(false);
-  let [city, setCity] = useState(props.defaultCity);
+  const [ready, setReady] = useState(false);
+  const [city, setCity] = useState(props.defaultCity);
   const [error, setError] = useState(null);
 
   function updateCityWeather(response) {
@@ -17,32 +17,28 @@ export default function Search(props) {
 
     let roundedWindSpeed = Math.round(response.data.wind.speed * 3.6 * 10) / 10; //includes conversion from m/sec to km/hr, and rounded to 1 decimal place
 
-    //Rendering the weather icon url as an image.....
-    const iconCode = response.data.weather[0].icon;
-    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
-
-    const newWeather = {
+    const newWeatherData = {
       city: response.data.name,
       temp: Math.round(response.data.main.temp),
-      tempMax: Math.round(response.data.main.temp_max),
-      tempMin: Math.round(response.data.main.temp_min),
+      tempMax: Math.round(response.data.main.temp_max), //SelfNote: Need to move these & update when we make the AJAX call to the forcaste API
+      tempMin: Math.round(response.data.main.temp_min), //SelfNote: Need to move these & update when we make the AJAX call to the forcaste API
       humidity: response.data.main.humidity,
       conditionDescription: response.data.weather[0].description,
       wind: roundedWindSpeed,
-      icon: iconUrl,
+      iconCode: response.data.weather[0].icon,
     };
 
-    props.onWeatherFetched(newWeather);
+    props.onWeatherFetched(newWeatherData);
   }
 
-  function accessCityWeather(event) {
+  function accessCityWeather() {
+    setReady(true); //SelfNote: Might consider later to move this to updateCityWeather function object
     setError(null); // Clear old error before new search
-    setReady(true);
 
     // Only runs & access OpenWeather API when city changes
     const weatherApiKey = "52fbb143d82a4151063455d0b96cd0e1";
-    let weatherUnits = "metric";
-    let weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${weatherUnits}&appid=${weatherApiKey}`;
+    const weatherUnits = "metric";
+    const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${weatherUnits}&appid=${weatherApiKey}`;
 
     axios
       .get(weatherApiUrl)
@@ -54,7 +50,6 @@ export default function Search(props) {
 
   function handelSubmit(event) {
     event.preventDefault();
-
     accessCityWeather();
   }
 

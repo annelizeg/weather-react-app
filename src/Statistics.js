@@ -4,6 +4,10 @@ import "./Statistics.css";
 /* Today's Weather Statistics */
 
 export default function Statistics(props) {
+  if (!props.weatherData) {
+    return <p>Loading statistics...</p>; // or just return nothing until data exists
+  }
+
   return (
     <div className="Statistics">
       <h3>More about today:</h3>

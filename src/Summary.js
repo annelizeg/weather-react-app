@@ -24,10 +24,10 @@ export default function Summary(props) {
     "03n": cloudy,
     "04d": overcast, //Broken Clouds
     "04n": overcast,
-    "09d": rainWithSun, //Shower Rain or drizzle
-    "09n": rainWithSun,
-    "10d": heavyRain, //Rain
-    "10n": heavyRain,
+    "09d": heavyRain, //Shower Rain or drizzle
+    "09n": heavyRain,
+    "10d": rainWithSun, //Rain
+    "10n": rainWithSun,
     "11d": thunderstorm, //Thunderstorm
     "11n": thunderstorm,
     "13d": snowy, //Snow

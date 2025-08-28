@@ -1,9 +1,9 @@
-.Date #current-day {
+.Clock .current-day {
   font-size: 1.5em;
   font-weight: 800;
 }
 
-.Date #date-time {
+.Clock .date-time {
   font-size: 1.2em;
   font-weight: 700;
 }

@@ -4,19 +4,7 @@ import "./Clock.css";
 /* Today's Day, Date & Time */
 
 export default function Clock() {
-  // if (!props.weatherData) {
-  //   return <p>Loading date...</p>; // or just return nothing until data exists
-  // }
-
   let now = new Date();
-  // let now = props.weatherData.date;
-
-  function addZero(i) {
-    if (i < 10) {
-      i = "0" + i;
-    }
-    return i;
-  }
 
   let days = [
     "Sunday",
@@ -47,28 +35,24 @@ export default function Clock() {
   let date = now.getDate();
   let month = months[now.getMonth()];
   let year = now.getFullYear();
-  let hours = addZero(now.getHours());
-  let minutes = addZero(now.getMinutes());
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
 
-  //   let ufhours = dateData.getHours();
-  //   let hours = ufhours >= 10 ? ufhours : `0${ufhours}`;
-
-  //   let ufminutes = dateData.getMinutes();
-  //   let minutes = ufminutes >= 10 ? ufminutes : `0${ufminutes}`;
+  let formattedHours = hours >= 10 ? hours : `0${hours}`;
+  let formattedMinutes = minutes >= 10 ? minutes : `0${minutes}`;
 
   let thisAmPm = hours >= 12 ? "PM" : "AM";
 
   return (
-    <div className="Date">
-      <p id="current-day">{day}</p>
-      <p id="date-time">
-        <span id="current-date">{date} </span>
-        <span id="current-month">{month} </span>
-        <span id="current-year">{year}</span>
+    <div className="Clock">
+      <p className="current-day">{day}</p>
+      <p className="date-time">
+        <span>{date} </span>
+        <span>{month} </span>
+        <span>{year}</span>
         <br />
-        <span id="current-hour">{hours}</span>:
-        <span id="current-minutes">{minutes}</span>
-        <span id="current-AmPm"> {thisAmPm}</span>
+        <span>{formattedHours}</span>:<span>{formattedMinutes}</span>
+        <span> {thisAmPm}</span>
       </p>
     </div>
   );

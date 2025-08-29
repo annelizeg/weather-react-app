@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./Summary.css";
 
-import Park1 from "./images/Park1.svg";
-import sunny from "./images/sunny.png";
-import partlySunny from "./images/partly-sunny.png";
-import cloudy from "./images/cloudy.png";
-import overcast from "./images/overcast.png";
-import rainWithSun from "./images/rain-with-sun.png";
-import heavyRain from "./images/heavy-rain.png";
-import thunderstorm from "./images/thunderstorm.png";
-import snowy from "./images/snowy.png";
-import fog from "./images/fog.png";
+import Park1 from "../images/Park1.svg";
+import sunny from "../images/sunny.png";
+import partlySunny from "../images/partly-sunny.png";
+import cloudy from "../images/cloudy.png";
+import overcast from "../images/overcast.png";
+import rainWithSun from "../images/rain-with-sun.png";
+import heavyRain from "../images/heavy-rain.png";
+import thunderstorm from "../images/thunderstorm.png";
+import snowy from "../images/snowy.png";
+import fog from "../images/fog.png";
 
 /* Today's Weather Summary */
 

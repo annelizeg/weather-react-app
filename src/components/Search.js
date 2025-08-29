@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Search.css";
 
-import magnifyglass from "./images/other/magnifyglass.png";
-import locationPin from "./images/other/locationPin.png";
+import magnifyglass from "../images/other/magnifyglass.png";
+import locationPin from "../images/other/locationPin.png";
 
 /* City Search Block and Current Location Button*/
 

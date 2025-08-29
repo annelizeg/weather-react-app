@@ -1,10 +1,10 @@
-Search.search-button,
-Search.current-location-button {
+.Search .search-button,
+.Search .current-location-button {
   padding: 0.375rem 0.6rem;
   transition: all 200ms ease-in-out;
 }
 
-Search.search-button:hover,
-Search.current-location-button:hover {
+.Search .search-button:hover,
+.Search .current-location-button:hover {
   background-color: #09194f;
 }

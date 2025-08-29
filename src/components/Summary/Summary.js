@@ -69,8 +69,8 @@ export default function Summary(props) {
       <br />
 
       <HighLowDisplay
-        maxC={props.weatherData.tempMax}
-        minC={props.weatherData.tempMin}
+        maxC={props.weatherData.tempMax} // SelfNote: To be updated once forcast API call made
+        minC={props.weatherData.tempMin} // SelfNote: To be updated once forcast API call made
         unit={unit}
       />
     </div>

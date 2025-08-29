@@ -13,10 +13,9 @@ export default function Search(props) {
   const [error, setError] = useState(null);
 
   function updateCityWeather(response) {
-    console.log(response.data);
+    // console.log(response.data);
 
     let roundedWindSpeed = Math.round(response.data.wind.speed * 3.6 * 10) / 10; //includes conversion from m/sec to km/hr, and rounded to 1 decimal place
-
     const newWeatherData = {
       city: response.data.name,
       temp: Math.round(response.data.main.temp),
@@ -26,17 +25,16 @@ export default function Search(props) {
       conditionDescription: response.data.weather[0].description,
       wind: roundedWindSpeed,
       iconCode: response.data.weather[0].icon,
-      // date: new Date(response.data.dt * 1000), //SelfNote: this seems to be the time that OpenWeather API made calculations and not the actual current time - think to remove.
     };
 
     props.onWeatherFetched(newWeatherData);
   }
 
+  // Only runs & access OpenWeather API when city changes
   function accessCityWeather() {
-    setReady(true); //SelfNote: Might consider later to move this to updateCityWeather function object
+    setReady(true);
     setError(null); // Clear old error before new search
 
-    // Only runs & access OpenWeather API when city changes
     const weatherApiKey = "52fbb143d82a4151063455d0b96cd0e1";
     const weatherUnits = "metric";
     const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${weatherUnits}&appid=${weatherApiKey}`;
@@ -61,12 +59,11 @@ export default function Search(props) {
   if (ready) {
     return (
       <div className="Search">
-        <form className="row g-2" onSubmit={handelSubmit} id="search-city-form">
+        <form className="row g-2" onSubmit={handelSubmit}>
           <div className="col-8">
             <input
               type="text"
               className="form-control"
-              id="search-city-input"
               list="datalist-cities"
               placeholder="Type to search for city or choose from list..."
               autoFocus="on"
@@ -85,11 +82,7 @@ export default function Search(props) {
             </datalist>
           </div>
           <div className="col">
-            <button
-              type="submit"
-              id="search-button"
-              className="btn btn-secondary search-button"
-            >
+            <button type="submit" className="btn btn-secondary search-button">
               <img src={magnifyglass} alt="search icon" width="20px" />
               Search
             </button>
@@ -97,7 +90,6 @@ export default function Search(props) {
           <div className="col">
             <button
               type="button"
-              id="current-location-button"
               className="btn btn-secondary current-location-button"
             >
               <img src={locationPin} alt="search icon" width="20px" />

@@ -15,9 +15,8 @@ import fog from "./images/fog.png";
 /* Today's Weather Summary */
 
 export default function Summary(props) {
-  const [celsiusIsActive, setCelsiusIsActive] = useState(true);
-  const [fahrenheitIsActive, setFahrenheitIsActive] = useState(false);
-  const [currentTemperature, setCurrentTemperature] = useState(null);
+  const [unit, setUnit] = useState("C"); // "C" or "F"
+  const [temperatureValues, setTemperatureValues] = useState({});
 
   const iconMap = {
     "01d": sunny, // Clear Sky
@@ -40,30 +39,35 @@ export default function Summary(props) {
     "50n": fog,
   };
 
-  // Update currentTemperature when new weatherData arrives
+  // Always save raw Celsius values from API when weatherData arrives
   useEffect(() => {
     if (props.weatherData) {
-      setCurrentTemperature(props.weatherData.temp);
+      setTemperatureValues({
+        currentTemp: props.weatherData.temp,
+        maxTemp: props.weatherData.tempMax,
+        minTemp: props.weatherData.tempMin,
+      });
     }
   }, [props.weatherData]); // runs whenever weatherData changes
 
-  function updateToCelsius() {
-    if (!celsiusIsActive) {
-      setCelsiusIsActive(!celsiusIsActive); // Invert the boolean state
-      setFahrenheitIsActive(!fahrenheitIsActive); // Invert the boolean state
-
-      setCurrentTemperature(Math.round(((currentTemperature - 32) * 5) / 9));
-    }
+  // Convert helper
+  function toFahrenheit(celsius) {
+    return (celsius * 9) / 5 + 32;
   }
 
-  function updateToFahrenheit() {
-    if (!fahrenheitIsActive) {
-      setCelsiusIsActive(!celsiusIsActive); // Invert the boolean state
-      setFahrenheitIsActive(!fahrenheitIsActive); // Invert the boolean state
-
-      setCurrentTemperature(Math.round((currentTemperature * 9) / 5 + 32));
-    }
-  }
+  // Display values depending on selected unit
+  const displayedTemp =
+    unit === "C"
+      ? temperatureValues.currentTemp
+      : toFahrenheit(temperatureValues.currentTemp);
+  const displayedMax =
+    unit === "C"
+      ? temperatureValues.maxTemp
+      : toFahrenheit(temperatureValues.maxTemp);
+  const displayedMin =
+    unit === "C"
+      ? temperatureValues.minTemp
+      : toFahrenheit(temperatureValues.minTemp);
 
   if (!props.weatherData) {
     return <p>Loading summary...</p>; // or just return nothing until data exists
@@ -79,23 +83,23 @@ export default function Summary(props) {
       </h2>
       <div className="row gx-0 justify-content-center">
         <div className="col-5 align-self-center">
-          <h2 id="current-temp">{currentTemperature}</h2>
+          <h2 id="current-temp">{Math.round(displayedTemp)}</h2>
         </div>
         <div className="col-3 align-self-top temp-unit-selector">
           <button
             className={`celsius-button ${
-              celsiusIsActive ? "celsius-button-selected" : ""
+              unit === "C" ? "celsius-button-selected" : ""
             }`}
-            onClick={updateToCelsius}
+            onClick={() => setUnit("C")}
           >
             ℃
           </button>
           |
           <button
             className={`fahrenheit-button ${
-              fahrenheitIsActive ? "fahrenheit-button-selected" : ""
+              unit === "F" ? "fahrenheit-button-selected" : ""
             }`}
-            onClick={updateToFahrenheit}
+            onClick={() => setUnit("F")}
           >
             ℉
           </button>
@@ -128,15 +132,15 @@ export default function Summary(props) {
       <p>
         Today's high:{" "}
         <span id="today-high" className="temp">
-          {props.weatherData.tempMax}
+          {Math.round(displayedMax)}
         </span>
-        <span className="temp-units">℃</span>
+        <span className="temp-units">°{unit}</span>
         <br />
         Today's low:{" "}
         <span id="today-low" className="temp">
-          {props.weatherData.tempMin}
+          {Math.round(displayedMin)}
         </span>
-        <span className="temp-units">℃</span>
+        <span className="temp-units">°{unit}</span>
       </p>
     </div>
   );

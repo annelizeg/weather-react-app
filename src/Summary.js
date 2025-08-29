@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Summary.css";
 
 import Park1 from "./images/Park1.svg";
@@ -15,6 +15,10 @@ import fog from "./images/fog.png";
 /* Today's Weather Summary */
 
 export default function Summary(props) {
+  const [celsiusIsActive, setCelsiusIsActive] = useState(true);
+  const [fahrenheitIsActive, setFahrenheitIsActive] = useState(false);
+  const [currentTemperature, setCurrentTemperature] = useState(null);
+
   const iconMap = {
     "01d": sunny, // Clear Sky
     "01n": sunny,
@@ -36,6 +40,31 @@ export default function Summary(props) {
     "50n": fog,
   };
 
+  // Update currentTemperature when new weatherData arrives
+  useEffect(() => {
+    if (props.weatherData) {
+      setCurrentTemperature(props.weatherData.temp);
+    }
+  }, [props.weatherData]); // runs whenever weatherData changes
+
+  function updateToCelsius() {
+    if (!celsiusIsActive) {
+      setCelsiusIsActive(!celsiusIsActive); // Invert the boolean state
+      setFahrenheitIsActive(!fahrenheitIsActive); // Invert the boolean state
+
+      setCurrentTemperature(Math.round(((currentTemperature - 32) * 5) / 9));
+    }
+  }
+
+  function updateToFahrenheit() {
+    if (!fahrenheitIsActive) {
+      setCelsiusIsActive(!celsiusIsActive); // Invert the boolean state
+      setFahrenheitIsActive(!fahrenheitIsActive); // Invert the boolean state
+
+      setCurrentTemperature(Math.round((currentTemperature * 9) / 5 + 32));
+    }
+  }
+
   if (!props.weatherData) {
     return <p>Loading summary...</p>; // or just return nothing until data exists
   }
@@ -50,11 +79,26 @@ export default function Summary(props) {
       </h2>
       <div className="row gx-0 justify-content-center">
         <div className="col-5 align-self-center">
-          <h2 id="current-temp">{props.weatherData.temp}</h2>
+          <h2 id="current-temp">{currentTemperature}</h2>
         </div>
         <div className="col-3 align-self-top temp-unit-selector">
-          <button className="celsius-button celsius-button-selected">℃</button>|
-          <button className="fahrenheit-button">℉</button>
+          <button
+            className={`celsius-button ${
+              celsiusIsActive ? "celsius-button-selected" : ""
+            }`}
+            onClick={updateToCelsius}
+          >
+            ℃
+          </button>
+          |
+          <button
+            className={`fahrenheit-button ${
+              fahrenheitIsActive ? "fahrenheit-button-selected" : ""
+            }`}
+            onClick={updateToFahrenheit}
+          >
+            ℉
+          </button>
         </div>
       </div>
       <div className="row gx-0 justify-content-center">

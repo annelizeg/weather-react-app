@@ -13,23 +13,3 @@
   border-radius: 20px;
   box-shadow: 2px 2px 2px 2px #09194f;
 }
-
-.Statistics .precipitation-block {
-  line-height: 1.5;
-}
-
-.Statistics .precip-volume-padding {
-  padding-left: 20px;
-}
-
-.Statistics #today-precip-type,
-.Statistics #today-UV-level {
-  font-size: 16px;
-  opacity: 0.95;
-}
-
-.Statistics #today-precip-volume,
-.Statistics #today-precip-chance {
-  font-size: 16px;
-  line-height: 1.5;
-}

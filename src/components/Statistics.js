@@ -5,7 +5,7 @@ import "./Statistics.css";
 
 export default function Statistics(props) {
   if (!props.weatherData) {
-    return <p>Loading statistics...</p>; // or just return nothing until data exists
+    return <p>Loading statistics...</p>; // return loading until data exists
   }
 
   return (
@@ -13,26 +13,13 @@ export default function Statistics(props) {
       <h3>More about today:</h3>
       <ul className="stats-list">
         <li className="stats-list-item">
-          <div className="precipitation-block">
-            Precipitation: <span id="today-precip-type">0.3mm</span>
-            <div>
-              <span id="today-precip-chance"></span>
-              <span id="today-precip-volume"></span>
-            </div>
-          </div>
+          Humidity: {props.weatherData.humidity}%
         </li>
         <li className="stats-list-item">
-          Humidity: <span id="today-humidity"></span>
-          {props.weatherData.humidity}%
+          Wind Speed: {props.weatherData.wind} km/hr
         </li>
-        <li className="stats-list-item">
-          Wind Speed: <span id="today-windspeed"></span>{" "}
-          {props.weatherData.wind} km/hr
-        </li>
-        <li className="stats-list-item">
-          UV Index: <span id="today-UV-index">1</span>
-          <span id="today-UV-level"></span>
-        </li>
+        {/* <li className="stats-list-item">Precipitation: --mm</li>  */}
+        {/* <li className="stats-list-item">UV Index: --</li> */}
       </ul>
     </div>
   );

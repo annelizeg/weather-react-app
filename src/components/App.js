@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import Search from "./Search";
-import Summary from "./Summary";
+import Summary from "./Summary/Summary";
 import Clock from "./Clock";
 import Statistics from "./Statistics";
 import Footer from "./Footer";

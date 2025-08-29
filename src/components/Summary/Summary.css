@@ -1,0 +1,9 @@
+.Summary .city {
+  font-size: 1.7em;
+  font-weight: 900;
+  text-shadow: 1px 1px 0 #f9ce00, 2px 2px 0 #247291;
+}
+
+.HighLowDisplay .temp {
+  font-weight: bold;
+}

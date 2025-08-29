@@ -1,0 +1,31 @@
+.TemperatureDisplay .temp-unit-selector {
+  margin-top: 14px;
+  text-align: left;
+}
+
+.TemperatureDisplay .celsius-button,
+.TemperatureDisplay .fahrenheit-button {
+  font-size: 14px;
+  color: #fff;
+  background: #6c757d;
+  border: 1px solid #6c757d;
+  border-radius: 8px;
+  min-width: 1.5em;
+  transition: all 200ms ease-in-out;
+}
+
+.TemperatureDisplay .celsius-button:hover,
+.TemperatureDisplay .fahrenheit-button:hover {
+  background-color: #09194f;
+}
+
+.TemperatureDisplay .celsius-button-selected,
+.TemperatureDisplay .fahrenheit-button-selected {
+  background-color: #09194f;
+}
+
+.TemperatureDisplay .current-temp {
+  font-size: 5em;
+  font-weight: bolder;
+  line-height: 1;
+}

@@ -4,6 +4,7 @@ import Search from "./Search";
 import Summary from "./Summary/Summary";
 import Clock from "./Clock";
 import Statistics from "./Statistics";
+import Forecast from "./Forecast";
 import Footer from "./Footer";
 
 import "./App.css";
@@ -55,6 +56,9 @@ export default function App() {
         </div>
 
         <hr />
+
+        {/*  The Next 5 Days Weather Forecast */}
+        <Forecast />
 
         {/* Footer */}
         <Footer />

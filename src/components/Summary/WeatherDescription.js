@@ -1,14 +1,15 @@
 import React from "react";
-import "./WeatherIconDescription.css";
+import WeatherIcon from "../WeatherIcon";
+
+import "./WeatherDescription.css";
 
 export default function WeatherIconDescription({
   iconCode,
   description,
-  iconMap,
   Park1,
 }) {
   return (
-    <div className="WeatherIconDescription">
+    <div className="WeatherDescription">
       <div className="row gx-0 justify-content-center">
         <div className="col-4 gy-3 align-self-center">
           <img
@@ -19,12 +20,7 @@ export default function WeatherIconDescription({
           />
         </div>
         <div className="col-8 align-self-top">
-          <img
-            src={iconMap[iconCode]}
-            alt="weather icon"
-            width="60px"
-            className="mb-1 mt-1"
-          />
+          <WeatherIcon iconCode={iconCode} />
           <h4>{description}</h4>
         </div>
       </div>

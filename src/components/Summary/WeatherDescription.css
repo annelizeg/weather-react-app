@@ -1,11 +1,11 @@
-.WeatherIconDescription h4 {
+.WeatherDescription h4 {
   font-size: calc(1.2rem + 0.3vw);
   width: 150px;
   margin: 0 auto 5px;
   text-transform: capitalize;
 }
 
-.WeatherIconDescription .app-park-picture {
+.WeatherDescription .app-park-picture {
   position: relative;
   left: 60px;
 }

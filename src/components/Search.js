@@ -18,6 +18,7 @@ export default function Search(props) {
     let roundedWindSpeed = Math.round(response.data.wind.speed * 3.6 * 10) / 10; //includes conversion from m/sec to km/hr, and rounded to 1 decimal place
     const newWeatherData = {
       city: response.data.name,
+      coordinates: response.data.coord,
       temp: Math.round(response.data.main.temp),
       tempMax: Math.round(response.data.main.temp_max), //SelfNote: Need to move these & update when we make the AJAX call to the forcaste API
       tempMin: Math.round(response.data.main.temp_min), //SelfNote: Need to move these & update when we make the AJAX call to the forcaste API

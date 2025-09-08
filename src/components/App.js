@@ -58,7 +58,7 @@ export default function App() {
         <hr />
 
         {/*  The Next 5 Days Weather Forecast */}
-        <Forecast />
+        <Forecast weatherData={weatherData} />
 
         {/* Footer */}
         <Footer />

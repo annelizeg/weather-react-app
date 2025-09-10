@@ -5,7 +5,7 @@ import ForecastDay from "./ForecastDay";
 
 /*  The Next 5 Days Weather Forecast */
 
-export default function Forecast({ weatherData, onForecastFetched }) {
+export default function Forecast({ weatherData, onForecastFetched, unit }) {
   const [ready, setReady] = useState(false);
   const [error, setError] = useState(null);
   const [forecastData, setForecastData] = useState(null);
@@ -55,7 +55,7 @@ export default function Forecast({ weatherData, onForecastFetched }) {
           if (index >= 1 && index <= 5) {
             return (
               <div key={index} className="col">
-                <ForecastDay data={dailyForecast} />
+                <ForecastDay data={dailyForecast} unit={unit} />
               </div>
             );
           } else {

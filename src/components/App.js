@@ -68,6 +68,7 @@ export default function App() {
         <Forecast
           weatherData={weatherData}
           onForecastFetched={setTodayMinMaxTemp}
+          unit={unit}
         />
 
         {/* Footer */}

@@ -4,11 +4,9 @@ import WeatherIcon from "./WeatherIcon";
 /*  Create Weather Forecast Day Card */
 
 export default function ForecastDay(props) {
-  console.log(props);
   function formateDay() {
     let date = new Date(props.data.time * 1000);
     let day = date.getDay();
-    console.log(day);
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     return days[day];
   }
@@ -18,19 +16,17 @@ export default function ForecastDay(props) {
     return iconCode;
   }
 
-  function minTemp() {
-    let temp = Math.round(props.data.temperature.minimum);
-    return temp;
+  // Temperature convert helper
+  function toFahrenheit(celsius) {
+    return (celsius * 9) / 5 + 32;
   }
 
-  function maxTemp() {
-    let temp = Math.round(props.data.temperature.maximum);
-    return temp;
-  }
+  // Display values depending on selected unit
+  const maxC = props.data.temperature.maximum;
+  const minC = props.data.temperature.minimum;
 
-  //   if (!props.forecastData) {
-  //     return <p>Loading forecast...</p>; // return loading until data exists
-  //   }
+  const displayedMax = props.unit === "C" ? maxC : toFahrenheit(maxC);
+  const displayedMin = props.unit === "C" ? minC : toFahrenheit(minC);
 
   return (
     <div className="ForecastDay">
@@ -39,9 +35,9 @@ export default function ForecastDay(props) {
           <h5>{formateDay()}</h5>
           <WeatherIcon iconCode={iconCode()} />
           <p>
-            <span className="temp">{minTemp()}</span>° /
+            <span className="temp">{Math.round(displayedMin)}</span>° /
             <strong>
-              <span className="temp">{maxTemp()}</span>°
+              <span className="temp">{Math.round(displayedMax)}</span>°
             </strong>
           </p>
         </div>

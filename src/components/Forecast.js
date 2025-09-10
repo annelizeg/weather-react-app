@@ -1,26 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 import ForecastDay from "./ForecastDay";
 
 /*  The Next 5 Days Weather Forecast */
 
-export default function Forecast(props) {
+export default function Forecast({ weatherData, onForecastFetched }) {
   const [ready, setReady] = useState(false);
   const [error, setError] = useState(null);
   const [forecastData, setForecastData] = useState(null);
 
-  const latitude = props.weatherData?.coordinates?.latitude;
-  const longitude = props.weatherData?.coordinates?.longitude;
+  const latitude = weatherData?.coordinates?.latitude;
+  const longitude = weatherData?.coordinates?.longitude;
 
-  function updateForecastWeather(response) {
-    setReady(true);
-    console.log(response.data);
+  // Stable function for handling the API response
+  const updateForecastWeather = useCallback(
+    (response) => {
+      setReady(true);
+      console.log(response.data);
 
-    setForecastData(response.data.daily);
+      setForecastData(response.data.daily);
 
-    props.onForecastFetched(response.data.daily[0].temperature); //global state management - sends forecast daily temp data up a level to be used in other componants
-  }
+      onForecastFetched(response.data.daily[0].temperature); //global state management - sends forecast daily temp data up a level to be used in other componants
+    },
+    [onForecastFetched] // only depends on this prop
+  );
 
   useEffect(() => {
     // Only make the API call when we have valid coordinates
@@ -35,12 +39,12 @@ export default function Forecast(props) {
         .get(forecastApiUrl)
         .then(updateForecastWeather)
         .catch(() => {
-          setError(`Forecast for "${props.weatherData?.city}" not available.`);
+          setError(`Forecast for "${weatherData?.city}" not available.`);
         });
     }
-  }, [latitude, longitude, props.weatherData?.city]); // Re-run when 'latitude', 'longitude' or 'city' changes
+  }, [latitude, longitude, weatherData?.city, updateForecastWeather]); // Re-run when 'latitude', 'longitude' or 'city' changes
 
-  if (!props.weatherData) {
+  if (!weatherData) {
     return <p>Loading forecast...</p>; // return loading until data exists
   }
 

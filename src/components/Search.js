@@ -26,7 +26,7 @@ export default function Search(props) {
       iconCode: response.data.condition.icon,
     };
 
-    props.onWeatherFetched(newWeatherData);
+    props.onWeatherFetched(newWeatherData); //global state management - sends weather data up a level to be used in other componants
   }
 
   // Only runs & access SheCodesWeather API when city changes

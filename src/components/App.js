@@ -10,7 +10,8 @@ import Footer from "./Footer";
 import "./App.css";
 
 export default function App() {
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState(null); //obtains data from Search componant
+  const [todayMinMaxTemp, setTodayMinMaxTemp] = useState(null); //obtains day's min/max temperaturs from Forecast componant
 
   return (
     <div className="App">
@@ -31,7 +32,10 @@ export default function App() {
             {/* Today's Weather Summary */}
             <div className="card h-100 text-center">
               <div className="card-body">
-                <Summary weatherData={weatherData} />
+                <Summary
+                  weatherData={weatherData}
+                  minMaxTemps={todayMinMaxTemp}
+                />
               </div>
             </div>
           </div>
@@ -58,7 +62,10 @@ export default function App() {
         <hr />
 
         {/*  The Next 5 Days Weather Forecast */}
-        <Forecast weatherData={weatherData} />
+        <Forecast
+          weatherData={weatherData}
+          onForecastFetched={setTodayMinMaxTemp}
+        />
 
         {/* Footer */}
         <Footer />

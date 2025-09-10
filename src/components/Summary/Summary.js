@@ -16,6 +16,8 @@ export default function Summary(props) {
     return <p>Loading summary...</p>; // return loading until data exists
   }
 
+  console.log(props.minMaxTemps);
+
   return (
     <div className="Summary">
       <h2>
@@ -38,8 +40,8 @@ export default function Summary(props) {
       <br />
 
       <HighLowDisplay
-        maxC={props.weatherData.tempMax} // SelfNote: To be updated once forcast API call made
-        minC={props.weatherData.tempMin} // SelfNote: To be updated once forcast API call made
+        maxC={props.minMaxTemps?.maximum}
+        minC={props.minMaxTemps?.minimum}
         unit={unit}
       />
     </div>

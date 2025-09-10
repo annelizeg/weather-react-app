@@ -18,6 +18,8 @@ export default function Forecast(props) {
     console.log(response.data);
 
     setForecastData(response.data.daily);
+
+    props.onForecastFetched(response.data.daily[0].temperature); //global state management - sends forecast daily temp data up a level to be used in other componants
   }
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Summary.css";
 
 import TemperatureDisplay from "./TemperatureDisplay";
@@ -10,13 +10,9 @@ import Park1 from "../../images/Park1.svg";
 /* Today's Weather Summary */
 
 export default function Summary(props) {
-  const [unit, setUnit] = useState("C"); // "C" or "F"
-
   if (!props.weatherData) {
     return <p>Loading summary...</p>; // return loading until data exists
   }
-
-  console.log(props.minMaxTemps);
 
   return (
     <div className="Summary">
@@ -27,8 +23,8 @@ export default function Summary(props) {
 
       <TemperatureDisplay
         tempCelsius={props.weatherData.temp}
-        unit={unit}
-        setUnit={setUnit}
+        unit={props.unit}
+        setUnit={props.onUnitsFetched} // obtain selected unit from TemperatureDisplay componant and send it a level up to App.js
       />
 
       <WeatherDescription
@@ -42,7 +38,7 @@ export default function Summary(props) {
       <HighLowDisplay
         maxC={props.minMaxTemps?.maximum}
         minC={props.minMaxTemps?.minimum}
-        unit={unit}
+        unit={props.unit}
       />
     </div>
   );

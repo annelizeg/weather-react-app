@@ -12,6 +12,7 @@ import "./App.css";
 export default function App() {
   const [weatherData, setWeatherData] = useState(null); //obtains data from Search componant
   const [todayMinMaxTemp, setTodayMinMaxTemp] = useState(null); //obtains day's min/max temperaturs from Forecast componant
+  const [unit, setUnit] = useState("C"); // "C" or "F" -- obtains selected unit from Summary componant
 
   return (
     <div className="App">
@@ -35,6 +36,8 @@ export default function App() {
                 <Summary
                   weatherData={weatherData}
                   minMaxTemps={todayMinMaxTemp}
+                  unit={unit}
+                  onUnitsFetched={setUnit}
                 />
               </div>
             </div>

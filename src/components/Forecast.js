@@ -45,9 +45,15 @@ export default function Forecast(props) {
   if (ready) {
     return (
       <div className="Forecast row justify-content-center">
-        <div className="col-2">
-          <ForecastDay forecastData={forecastData[0]} />
-        </div>
+        {forecastData.map((dailyForecast, index) => {
+          if (index < 5) {
+            return (
+              <div key={index} className="col">
+                <ForecastDay data={dailyForecast} />
+              </div>
+            );
+          }
+        })}
         {error && (
           <div>
             <p style={{ color: "white" }}>{error}</p>

@@ -4,25 +4,27 @@ import WeatherIcon from "./WeatherIcon";
 /*  Create Weather Forecast Day Card */
 
 export default function ForecastDay(props) {
+  console.log(props);
   function formateDay() {
-    let date = new Date(props.forecastData.time);
+    let date = new Date(props.data.time * 1000);
     let day = date.getDay();
+    console.log(day);
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     return days[day];
   }
 
   function iconCode() {
-    let iconCode = props.forecastData.condition.icon;
+    let iconCode = props.data.condition.icon;
     return iconCode;
   }
 
   function minTemp() {
-    let temp = Math.round(props.forecastData.temperature.minimum);
+    let temp = Math.round(props.data.temperature.minimum);
     return temp;
   }
 
   function maxTemp() {
-    let temp = Math.round(props.forecastData.temperature.maximum);
+    let temp = Math.round(props.data.temperature.maximum);
     return temp;
   }
 

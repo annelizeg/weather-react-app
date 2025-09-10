@@ -52,7 +52,7 @@ export default function Forecast({ weatherData, onForecastFetched }) {
     return (
       <div className="Forecast row justify-content-center">
         {forecastData.map((dailyForecast, index) => {
-          if (index < 5) {
+          if (index >= 1 && index <= 5) {
             return (
               <div key={index} className="col">
                 <ForecastDay data={dailyForecast} />

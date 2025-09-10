@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import WeatherIcon from "./WeatherIcon";
+import ForecastDay from "./ForecastDay";
 
 /*  The Next 5 Days Weather Forecast */
 
 export default function Forecast(props) {
   const [ready, setReady] = useState(false);
   const [error, setError] = useState(null);
+  const [forecastData, setForecastData] = useState(null);
 
   const latitude = props.weatherData?.coordinates?.latitude;
   const longitude = props.weatherData?.coordinates?.longitude;
@@ -15,6 +16,8 @@ export default function Forecast(props) {
   function updateForecastWeather(response) {
     setReady(true);
     console.log(response.data);
+
+    setForecastData(response.data.daily);
   }
 
   useEffect(() => {
@@ -43,18 +46,7 @@ export default function Forecast(props) {
     return (
       <div className="Forecast row justify-content-center">
         <div className="col-2">
-          <div className="card text-center">
-            <div className="card-body">
-              <h5>Thu</h5>
-              <WeatherIcon iconCode="01d" />
-              <p>
-                <span className="temp">10</span>° /
-                <strong>
-                  <span className="temp">19</span>°
-                </strong>
-              </p>
-            </div>
-          </div>
+          <ForecastDay forecastData={forecastData[0]} />
         </div>
         {error && (
           <div>
@@ -64,6 +56,6 @@ export default function Forecast(props) {
       </div>
     );
   } else {
-    return "Loading....";
+    return "";
   }
 }

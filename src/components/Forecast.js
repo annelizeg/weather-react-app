@@ -52,6 +52,8 @@ export default function Forecast(props) {
                 <ForecastDay data={dailyForecast} />
               </div>
             );
+          } else {
+            return null;
           }
         })}
         {error && (
@@ -62,6 +64,6 @@ export default function Forecast(props) {
       </div>
     );
   } else {
-    return "";
+    return null;
   }
 }

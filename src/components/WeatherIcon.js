@@ -12,24 +12,24 @@ import fog from "../images/fog.png";
 
 export default function WeatherIcon({ iconCode }) {
   const iconMap = {
-    "01d": sunny, // Clear Sky
-    "01n": sunny,
-    "02d": partlySunny, //Few Clouds
-    "02n": partlySunny,
-    "03d": cloudy, //Scattered Clouds
-    "03n": cloudy,
-    "04d": overcast, //Broken Clouds
-    "04n": overcast,
-    "09d": heavyRain, //Shower Rain or drizzle
-    "09n": heavyRain,
-    "10d": rainWithSun, //Rain
-    "10n": rainWithSun,
-    "11d": thunderstorm, //Thunderstorm
-    "11n": thunderstorm,
-    "13d": snowy, //Snow
-    "13n": snowy,
-    "50d": fog, //Mist or fog or haze
-    "50n": fog,
+    "clear-sky-day": sunny, // Clear Sky
+    "clear-sky-night": sunny,
+    "few-clouds-day": partlySunny, //Few Clouds
+    "few-clouds-night": partlySunny,
+    "scattered-clouds-day": cloudy, //Scattered Clouds
+    "scattered-clouds-night": cloudy,
+    "broken-clouds-day": overcast, //Broken Clouds
+    "broken-clouds-night": overcast,
+    "shower-rain-day": heavyRain, //Shower Rain or drizzle
+    "shower-rain-night": heavyRain,
+    "rain-day": rainWithSun, //Rain
+    "rain-night": rainWithSun,
+    "thunderstorm-day": thunderstorm, //Thunderstorm
+    "thunderstorm-night": thunderstorm,
+    "snow-day": snowy, //Snow
+    "snow-night": snowy,
+    "mist-day": fog, //Mist or fog or haze
+    "mist-night": fog,
   };
 
   return (

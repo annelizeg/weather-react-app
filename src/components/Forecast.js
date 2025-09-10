@@ -9,8 +9,8 @@ export default function Forecast(props) {
   const [ready, setReady] = useState(false);
   const [error, setError] = useState(null);
 
-  const latitude = props.weatherData?.coordinates?.lat;
-  const longitude = props.weatherData?.coordinates?.lon;
+  const latitude = props.weatherData?.coordinates?.latitude;
+  const longitude = props.weatherData?.coordinates?.longitude;
 
   function updateForecastWeather(response) {
     setReady(true);
@@ -22,9 +22,9 @@ export default function Forecast(props) {
     if (latitude && longitude) {
       setError(null); // Clear old error before new search
 
-      const weatherApiKey = "52fbb143d82a4151063455d0b96cd0e1";
+      const weatherApiKey = "feb0504864ab3c8o978403c9t3b099b5";
       const weatherUnits = "metric";
-      const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=${weatherUnits}&appid=${weatherApiKey}`;
+      const forecastApiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${latitude}&lon=${longitude}&units=${weatherUnits}&key=${weatherApiKey}`;
 
       axios
         .get(forecastApiUrl)

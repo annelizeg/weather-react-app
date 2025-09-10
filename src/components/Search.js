@@ -17,28 +17,28 @@ export default function Search(props) {
 
     let roundedWindSpeed = Math.round(response.data.wind.speed * 3.6 * 10) / 10; //includes conversion from m/sec to km/hr, and rounded to 1 decimal place
     const newWeatherData = {
-      city: response.data.name,
-      coordinates: response.data.coord,
-      temp: Math.round(response.data.main.temp),
-      tempMax: Math.round(response.data.main.temp_max), //SelfNote: Need to move these & update when we make the AJAX call to the forcaste API
-      tempMin: Math.round(response.data.main.temp_min), //SelfNote: Need to move these & update when we make the AJAX call to the forcaste API
-      humidity: response.data.main.humidity,
-      conditionDescription: response.data.weather[0].description,
+      city: response.data.city,
+      coordinates: response.data.coordinates,
+      temp: Math.round(response.data.temperature.current),
+      // tempMax: Math.round(response.data.main.temp_max), //SelfNote: Need to move these & update when we make the AJAX call to the forcaste API
+      // tempMin: Math.round(response.data.main.temp_min), //SelfNote: Need to move these & update when we make the AJAX call to the forcaste API
+      humidity: response.data.temperature.humidity,
+      conditionDescription: response.data.condition.description,
       wind: roundedWindSpeed,
-      iconCode: response.data.weather[0].icon,
+      iconCode: response.data.condition.icon,
     };
 
     props.onWeatherFetched(newWeatherData);
   }
 
-  // Only runs & access OpenWeather API when city changes
+  // Only runs & access SheCodesWeather API when city changes
   function accessCityWeather() {
     setReady(true);
     setError(null); // Clear old error before new search
 
-    const weatherApiKey = "52fbb143d82a4151063455d0b96cd0e1";
+    const weatherApiKey = "feb0504864ab3c8o978403c9t3b099b5";
     const weatherUnits = "metric";
-    const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${weatherUnits}&appid=${weatherApiKey}`;
+    const weatherApiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&units=${weatherUnits}&key=${weatherApiKey}`;
 
     axios
       .get(weatherApiUrl)

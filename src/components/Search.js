@@ -3,7 +3,7 @@ import axios from "axios";
 import "./Search.css";
 
 import magnifyglass from "../images/other/magnifyglass.png";
-import locationPin from "../images/other/locationPin.png";
+import SearchCurrentCoordinates from "./SearchCurrentCoordinates";
 
 /* City Search Block and Current Location Button*/
 
@@ -11,6 +11,7 @@ export default function Search(props) {
   const [ready, setReady] = useState(false);
   const [city, setCity] = useState(props.defaultCity);
   const [error, setError] = useState(null);
+  const [testCoords, setTestCoords] = useState(null); //SelfNote: for testing only, to be removed
 
   function updateCityWeather(response) {
     // console.log(response.data);
@@ -89,14 +90,14 @@ export default function Search(props) {
               Search
             </button>
           </div>
+
+          {/* Obtaining user's current location coordinates and associated weather data if "Current" button is clicked. */}
           <div className="col">
-            <button
-              type="button"
-              className="btn btn-secondary current-location-button"
-            >
-              <img src={locationPin} alt="search icon" width="20px" />
-              Current
-            </button>
+            <SearchCurrentCoordinates
+              onCoordsFetched={setTestCoords} //SelfNote: testCoords for testing only, to be removed
+              onCurrentCoordinatesWeatherFetched={updateCityWeather}
+              setError={setError}
+            />
           </div>
         </form>
         {error && (
@@ -104,6 +105,11 @@ export default function Search(props) {
             <p style={{ color: "red" }}>{error}</p>
           </div>
         )}
+        The current coordinates are:{" "}
+        {testCoords
+          ? `${testCoords.latitude}, ${testCoords.longitude}`
+          : "Not set"}{" "}
+        {/* SelfNote: testCoords for testing only, to be removed */}
       </div>
     );
   } else {

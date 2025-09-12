@@ -4,7 +4,6 @@ import axios from "axios";
 import locationPin from "../images/other/locationPin.png";
 
 export default function SearchCurrentCoordinates({
-  onCoordsFetched, //SelfNote: testCoords for testing only, to be removed
   onCurrentCoordinatesWeatherFetched,
   setError,
 }) {
@@ -17,7 +16,6 @@ export default function SearchCurrentCoordinates({
             longitude: position.coords.longitude,
           };
 
-          onCoordsFetched(coords); //SelfNote: testCoords for testing only, to be removed
           accessPositionWeather(coords);
         },
         (error) => {
@@ -54,7 +52,6 @@ export default function SearchCurrentCoordinates({
           setError(`Weather for current location coordinates not available.`);
         });
     }
-    console.log("Lat:", coords.latitude, "Lon:", coords.longitude);
   }
 
   return (

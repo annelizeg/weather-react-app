@@ -66,9 +66,11 @@ export default function Search(props) {
               className="form-control"
               list="datalist-cities"
               placeholder="Type to search for city or choose from list..."
+              value={city}
               autoFocus="on"
               autoComplete="off"
               onChange={updateCityName}
+              onFocus={() => setCity("")} // clears on focus
             />
             <datalist id="datalist-cities">
               <option value="Adelaide"></option>

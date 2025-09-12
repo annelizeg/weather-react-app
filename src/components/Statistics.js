@@ -13,6 +13,9 @@ export default function Statistics(props) {
       <h3>More about today:</h3>
       <ul className="stats-list">
         <li className="stats-list-item">
+          Feels Like: {props.weatherData.feelsLikeTemp}°C
+        </li>
+        <li className="stats-list-item">
           Humidity: {props.weatherData.humidity}%
         </li>
         <li className="stats-list-item">

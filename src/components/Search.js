@@ -20,6 +20,7 @@ export default function Search(props) {
       city: response.data.city,
       coordinates: response.data.coordinates,
       temp: Math.round(response.data.temperature.current),
+      feelsLikeTemp: Math.round(response.data.temperature.feels_like),
       humidity: response.data.temperature.humidity,
       conditionDescription: response.data.condition.description,
       wind: roundedWindSpeed,

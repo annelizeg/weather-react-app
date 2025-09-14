@@ -13,8 +13,6 @@ export default function Search(props) {
   const [error, setError] = useState(null);
 
   function updateCityWeather(response) {
-    // console.log(response.data);
-
     let roundedWindSpeed = Math.round(response.data.wind.speed * 3.6 * 10) / 10; //includes conversion from m/sec to km/hr, and rounded to 1 decimal place
     const newWeatherData = {
       city: response.data.city,

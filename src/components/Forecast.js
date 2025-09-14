@@ -17,10 +17,7 @@ export default function Forecast({ weatherData, onForecastFetched, unit }) {
   const updateForecastWeather = useCallback(
     (response) => {
       setReady(true);
-      console.log(response.data);
-
       setForecastData(response.data.daily);
-
       onForecastFetched(response.data.daily[0].temperature); //global state management - sends forecast daily temp data up a level to be used in other componants
     },
     [onForecastFetched] // only depends on this prop

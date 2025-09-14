@@ -3,6 +3,8 @@ import axios from "axios";
 
 import locationPin from "../images/other/locationPin.png";
 
+/* Current Location Button Functionality - Obtain user's current location coordinates and associated weather data if "Current" button is clicked. */
+
 export default function SearchCurrentCoordinates({
   onCurrentCoordinatesWeatherFetched,
   setError,
@@ -37,6 +39,7 @@ export default function SearchCurrentCoordinates({
     }
   }
 
+  // Only runs & access SheCodesWeather API if city coordinates exist
   function accessPositionWeather(coords) {
     if (coords) {
       const weatherApiKey = "feb0504864ab3c8o978403c9t3b099b5";
